@@ -28,7 +28,7 @@ class Order: ObservableObject, Codable {
     @Published var addSprinkles = false
     
     @Published var name = "baris karalar"
-    @Published var streetAddress = "    "
+    @Published var streetAddress = "Some street"
     @Published var city = "Berlin"
     @Published var zip = "10961"
     

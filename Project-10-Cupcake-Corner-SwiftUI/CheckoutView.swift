@@ -14,6 +14,8 @@ struct CheckoutView: View {
     @State private var conformationMessage = ""
     @State private var showingConfirmation = false
     
+    @State private var connectionErrorMessage = ""
+    @State private var showingConnectionError = false
     
     var body: some View {
         
@@ -40,6 +42,9 @@ struct CheckoutView: View {
         .alert(isPresented: $showingConfirmation, content: {
             Alert(title: Text("a asdf sfsd"), message: Text(conformationMessage), dismissButton: .default(Text("Okk")))
         })
+        .alert(isPresented: $showingConnectionError) {
+            Alert(title: Text(connectionErrorMessage))
+        }
         
         
     }
@@ -63,6 +68,8 @@ struct CheckoutView: View {
             
             guard let data = data else {
                 print("no data in response: \(error?.localizedDescription ?? "Unknown error")")
+                showingConnectionError = true
+                connectionErrorMessage = "\(error?.localizedDescription ?? "Unknown error")"
                 return
             }
             
