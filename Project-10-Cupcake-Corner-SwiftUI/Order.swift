@@ -28,12 +28,14 @@ class Order: ObservableObject, Codable {
     @Published var addSprinkles = false
     
     @Published var name = "baris karalar"
-    @Published var streetAddress = "hooop str"
+    @Published var streetAddress = "    "
     @Published var city = "Berlin"
     @Published var zip = "10961"
     
     var hasValidAddress: Bool {
-        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
+        
+        
+        if name.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty || streetAddress.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty || city.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty || zip.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty {
             return false
         }
         return true
